@@ -30,5 +30,10 @@ describe('tabs', function() {
             var item = $('.tabs_content > div:nth-child(2)');
             expect(item).toHaveClass('active');
         });
+
+        it('adds the hash to window.location.hash', function() {
+            var hash = window.location.hash;
+            expect(hash).toEqual('#tab-tab2');
+        });
     });
 });

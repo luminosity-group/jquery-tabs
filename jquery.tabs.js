@@ -34,6 +34,8 @@
 
                 $(content_items).hide();
                 $(id, content_container).show().addClass('active');
+
+                window.location.hash = 'tab-' + id.replace('#', ''); 
             };
 
             activate_tab($('li:first', navigation_container))
