@@ -13,6 +13,7 @@
                 /* Selectors */
                 content: '.tabs_content',
                 navigation: '.tabs_nav',
+                first_tab: 'li:first',
 
                 hash_prefix: 'tab'
             };
@@ -24,6 +25,9 @@
             var content_container    = $(settings.content, container);
             var content_items        = $(content_container).children();
 
+            /**
+             * Fire the activate_tab method when a navigation item is clicked
+             */
             $('li', navigation_container).click(function(e) {
                 e.preventDefault();
                 activate_tab($(this), true);
@@ -33,8 +37,8 @@
              * Activates a tab
              *
              * tab         - a jQuery Element that represents the tab to activate
-             * update_hash - A Boolean value. When true, updates the
-             *               window.location.hash
+             * update_hash - A Boolean value. When true, updates
+             *               window.location.hash to the current tab
              */
             var activate_tab = function(tab, update_hash) {
                 var id = $(tab).attr('rel');
@@ -51,7 +55,7 @@
             };
 
             var id = window.location.hash.replace(settings.hash_prefix + '-', '');
-            var element = id ? 'li[rel=' + id + ']' : 'li:first';
+            var element = id ? 'li[rel=' + id + ']' : settings.first_tab;
             activate_tab($(element, navigation_container), false);
         });
     }
