@@ -49,9 +49,9 @@
                 }
             };
 
-            var hash = window.location.hash.replace('#' + settings.hash_prefix + '-', '');
-            var element = hash ? $('li[rel=#' + hash + ']', navigation_container) : $('li:first', navigation_container);
-            activate_tab(element, false);
+            var id = window.location.hash.replace(settings.hash_prefix + '-', '');
+            var element = id ? 'li[rel=' + id + ']' : 'li:first';
+            activate_tab($(element, navigation_container), false);
         });
     }
 })(jQuery);
