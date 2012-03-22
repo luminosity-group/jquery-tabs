@@ -28,11 +28,13 @@ describe('tabs', function() {
         it('sets the .active class on the nav item that was clicked', function() {
             var item = $('.tabs_nav li:nth-child(2)');
             expect(item).toHaveClass('active');
+            expect($('.tabs_nav li:nth-child(1)')).not.toHaveClass('.active');
         });
 
         it('sets the .active class on the content item for the selected nav item', function() {
             var item = $('.tabs_content > div:nth-child(2)');
             expect(item).toHaveClass('active');
+            expect($('.tabs_content > div:nth-child(1)')).not.toHaveClass('active');
         });
 
         it('adds the hash to window.location.hash', function() {

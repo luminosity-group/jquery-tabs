@@ -39,9 +39,10 @@
             var activate_tab = function(tab, update_hash) {
                 var id = $(tab).attr('rel');
 
+                $('li', navigation_container).removeClass('active');
                 $(tab).addClass('active');
 
-                $(content_items).hide();
+                $(content_items).hide().removeClass('active');
                 $(id, content_container).show().addClass('active');
 
                 if (update_hash) {

@@ -11,19 +11,41 @@
         });
     </script>
 
+    <style type="text/css" media="all">
+        ul.tabs_nav,
+        ul.tabs_nav li {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        ul.tabs_nav li {
+            float: left;
+            list-style: none;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        ul.tabs_nav li.active {
+            font-weight: bold;
+        }
+        .tabs_content {
+            padding: 20px;
+            border: 1px solid #999;
+            clear: both;
+        }
+    </style>
+
     <title>Index</title>
 </head>
 <body>
     <div class="tabs">
         <ul class="tabs_nav">
-            <li rel="#tab1">Tab 1</li>
-            <li rel="#tab2">Tab 2</li>
+            <li rel="#cats">Cats</li>
+            <li rel="#dogs">Dogs</li>
         </ul>
         <div class="tabs_content">
-            <div id="tab1">
+            <div id="cats">
                 Tab 1 content
             </div>
-            <div id="tab2">
+            <div id="dogs">
                 Tab 2 content
             </div>
         </div>
