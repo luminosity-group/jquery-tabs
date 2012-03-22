@@ -22,7 +22,7 @@ describe('tabs', function() {
 
     describe('clicking on a tab', function() {
         beforeEach(function() {
-            $('.tabs_nav li:nth-child(2) a').trigger('click');
+            $('.tabs_nav li:nth-child(2)').trigger('click');
         });
 
         it('sets the .active class on the nav item that was clicked', function() {

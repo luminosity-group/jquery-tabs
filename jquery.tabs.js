@@ -24,9 +24,9 @@
             var content_container    = $(settings.content, container);
             var content_items        = $(content_container).children();
 
-            $('li a', navigation_container).click(function(e) {
+            $('li', navigation_container).click(function(e) {
                 e.preventDefault();
-                activate_tab($(this).closest('li'), true);
+                activate_tab($(this), true);
             });
 
             /**
@@ -37,7 +37,7 @@
              *               window.location.hash
              */
             var activate_tab = function(tab, update_hash) {
-                var id = $('a', tab).attr('href');
+                var id = $(tab).attr('rel');
 
                 $(tab).addClass('active');
 
@@ -50,7 +50,7 @@
             };
 
             var hash = window.location.hash.replace('#' + settings.hash_prefix + '-', '');
-            var element = hash ? $('a[href=#' + hash + ']', navigation_container).closest('li') : $('li:first', navigation_container);
+            var element = hash ? $('li[rel=#' + hash + ']', navigation_container) : $('li:first', navigation_container);
             activate_tab(element, false);
         });
     }
