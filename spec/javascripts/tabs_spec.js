@@ -3,6 +3,10 @@ describe('tabs', function() {
         loadFixtures('tabs.html')
         $('.tabs').tabs();
     });
+    
+    afterEach(function() {
+        window.location.hash = '';
+    });
 
     it('sets the .active class on the first nav item', function() {
         var item = $('.tabs_nav li:first')
@@ -34,6 +38,15 @@ describe('tabs', function() {
         it('adds the hash to window.location.hash', function() {
             var hash = window.location.hash;
             expect(hash).toEqual('#tab-tab2');
+        });
+    });
+
+    describe('page load with a hash', function() {
+        it('sets the .active class on the nav item specified in the url', function() {
+            window.location.hash = '#tab-tab2';
+            $('.tabs').tabs();
+            var item = $('.tabs_nav li:nth-child(2)');
+            expect(item).toHaveClass('active');
         });
     });
 });

@@ -12,7 +12,9 @@
             var defaults = {
                 /* Selectors */
                 content: '.tabs_content',
-                navigation: '.tabs_nav'
+                navigation: '.tabs_nav',
+
+                hash_prefix: 'tab'
             };
 
             var settings = $.extend(true, {}, defaults, options);
@@ -22,23 +24,34 @@
             var content_container    = $(settings.content, container);
             var content_items        = $(content_container).children();
 
-            $('li a', navigation_container).click(function() {
-                activate_tab($(this).closest('li'));
+            $('li a', navigation_container).click(function(e) {
+                e.preventDefault();
+                activate_tab($(this).closest('li'), true);
             });
 
-            var activate_tab = function(tab) {
+            /**
+             * Activates a tab
+             *
+             * tab         - a jQuery Element that represents the tab to activate
+             * update_hash - A Boolean value. When true, updates the
+             *               window.location.hash
+             */
+            var activate_tab = function(tab, update_hash) {
                 var id = $('a', tab).attr('href');
 
-                $('li', navigation_container).hide();
-                $(tab).show().addClass('active');
+                $(tab).addClass('active');
 
                 $(content_items).hide();
                 $(id, content_container).show().addClass('active');
 
-                window.location.hash = 'tab-' + id.replace('#', ''); 
+                if (update_hash) {
+                    window.location.hash = settings.hash_prefix + '-' + id.replace('#', ''); 
+                }
             };
 
-            activate_tab($('li:first', navigation_container))
+            var hash = window.location.hash.replace('#' + settings.hash_prefix + '-', '');
+            var element = hash ? $('a[href=#' + hash + ']', navigation_container).closest('li') : $('li:first', navigation_container);
+            activate_tab(element, false);
         });
     }
 })(jQuery);
