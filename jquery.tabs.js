@@ -56,8 +56,13 @@
                 }
             };
 
-            var id = window.location.hash.replace(settings.hash_prefix + '-', '');
-            var element = id ? settings.tab_element + '[rel=' + id + ']' : settings.first_tab;
+            /* Check if a hash is passed, else default to `settings.first_tab` */
+            var element = settings.first_tab, id, selector;
+            id       = window.location.hash.replace(settings.hash_prefix + '-', '');
+            selector = settings.tab_element + '[rel=' + id + ']';
+            if (id && $(navigation_container).has(selector)) {
+                element = selector;
+            }
             activate_tab($(element, navigation_container), false);
         });
     }
