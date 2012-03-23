@@ -15,7 +15,8 @@
                 navigation: '.tabs_nav',
                 first_tab: 'li:first',
 
-                hash_prefix: 'tab'
+                hash_prefix: 'tab',
+                tab_element: 'li'
             };
 
             var settings = $.extend(true, {}, defaults, options);
@@ -28,7 +29,7 @@
             /**
              * Fire the activate_tab method when a navigation item is clicked
              */
-            $('li', navigation_container).click(function(e) {
+            $(settings.tab_element, navigation_container).click(function(e) {
                 e.preventDefault();
                 activate_tab($(this), true);
             });
@@ -43,7 +44,7 @@
             var activate_tab = function(tab, update_hash) {
                 var id = $(tab).attr('rel');
 
-                $('li', navigation_container).removeClass('active');
+                $(settings.tab_element, navigation_container).removeClass('active');
                 $(tab).addClass('active');
 
                 $(content_items).hide().removeClass('active');
@@ -55,7 +56,7 @@
             };
 
             var id = window.location.hash.replace(settings.hash_prefix + '-', '');
-            var element = id ? 'li[rel=' + id + ']' : settings.first_tab;
+            var element = id ? settings.tab_element + '[rel=' + id + ']' : settings.first_tab;
             activate_tab($(element, navigation_container), false);
         });
     }
