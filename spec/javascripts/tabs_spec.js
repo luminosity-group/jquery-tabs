@@ -10,15 +10,15 @@
         });
 
         it('sets the .active class on the first nav item', function() {
-            var item = $('.tabs_nav li:first')
-            expect(item).toHaveClass('active');
-            expect(item).toBeVisible();
+            var tab = $('.tabs_nav li:first')
+            expect(tab).toHaveClass('active');
+            expect(tab).toBeVisible();
         });
 
         it('sets the .active class on the first content item', function() {
-            var item = $('.tabs_content > div:first')
-            expect(item).toHaveClass('active');
-            expect(item).toBeVisible();
+            var content = $('.tabs_content > div:first')
+            expect(content).toHaveClass('active');
+            expect(content).toBeVisible();
         });
 
         describe('clicking on a tab', function() {
@@ -27,14 +27,14 @@
             });
 
             it('sets the .active class on the nav item that was clicked', function() {
-                var item = $('.tabs_nav li:nth-child(2)');
-                expect(item).toHaveClass('active');
+                var tab = $('.tabs_nav li:nth-child(2)');
+                expect(tab).toHaveClass('active');
                 expect($('.tabs_nav li:nth-child(1)')).not.toHaveClass('.active');
             });
 
             it('sets the .active class on the content item for the selected nav item', function() {
-                var item = $('.tabs_content > div:nth-child(2)');
-                expect(item).toHaveClass('active');
+                var content = $('.tabs_content > div:nth-child(2)');
+                expect(content).toHaveClass('active');
                 expect($('.tabs_content > div:nth-child(1)')).not.toHaveClass('active');
             });
 
@@ -48,8 +48,8 @@
             it('sets the .active class on the nav item specified in the url', function() {
                 window.location.hash = '#tab-tab2';
                 $('.tabs').tabs();
-                var item = $('.tabs_nav li:nth-child(2)');
-                expect(item).toHaveClass('active');
+                var tab = $('.tabs_nav li:nth-child(2)');
+                expect(tab).toHaveClass('active');
             });
         });
     });
