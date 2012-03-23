@@ -60,9 +60,7 @@
             var element = settings.first_tab, id, selector;
             id       = window.location.hash.replace(settings.hash_prefix + '-', '');
             selector = settings.tab_element + '[rel=' + id + ']';
-            if (id && $(navigation_container).has(selector)) {
-                element = selector;
-            }
+            element = (id && $(navigation_container).has(selector)) ? selector : element;
             activate_tab($(element, navigation_container), false);
         });
     }
