@@ -15,6 +15,7 @@
                 navigation: '.tabs_nav',
                 first_tab: 'li:first',
 
+                update_hash: true,
                 hash_prefix: 'tab',
                 tab_element: 'li'
             };
@@ -31,7 +32,7 @@
              */
             $(settings.tab_element, navigation_container).click(function(e) {
                 e.preventDefault();
-                activate_tab($(this), true);
+                activate_tab($(this), settings.update_hash);
             });
 
             /**
