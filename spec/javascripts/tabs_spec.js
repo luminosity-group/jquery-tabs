@@ -1,8 +1,8 @@
-[true, false].forEach(function(enabled_animation) {
-    describe('tabs', function() {
+[true, false].forEach(function(animation_enabled) {
+    describe('tabs with animation ' + (animation_enabled ? 'enabled' : 'disabled'), function() {
         beforeEach(function() {
             loadFixtures('tabs.html')
-            $('.tabs').tabs({ animate: enabled_animation });
+            $('.tabs').tabs({ animate: animation_enabled });
         });
         
         afterEach(function() {
