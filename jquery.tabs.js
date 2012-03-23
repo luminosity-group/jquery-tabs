@@ -17,7 +17,8 @@
 
                 update_hash: true,
                 hash_prefix: 'tab',
-                tab_element: 'li'
+                tab_element: 'li',
+                animate: true
             };
 
             var settings = $.extend(true, {}, defaults, options);
@@ -49,7 +50,12 @@
                 $(tab).addClass('active');
 
                 $(content_items).hide().removeClass('active');
-                $(id, content_container).show().addClass('active');
+
+                if (settings.animate) {
+                    $(id, content_container).fadeTo('fast', 1).addClass('active');
+                } else {
+                    $(id, content_container).show().addClass('active');
+                }
 
                 if (update_hash) {
                     window.location.hash = settings.hash_prefix + '-' + id.replace('#', ''); 
